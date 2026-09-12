@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <title>Genius</title>
+  </head>
+
+  <body>
+    <main>
+      <h1 class="title">Genius</h1>
+
+      <div class="content">
+        <div>
+          <div id="indicador">
+            <span class="material-icons" id="iconeAcerto">check</span>
+            <span class="material-icons" id="iconeErro">close</span>
+          </div>
+        </div>
+
+        <div class="btnGroup">
+          <div class="row1">
+            <button class="btnRed btn" onclick="validarAcerto('R')">R</button>
+            <button class="btnBlue btn" onclick="validarAcerto('B')">B</button>
+          </div>
+
+          <div class="row2">
+            <button class="btnYellow btn" onclick="validarAcerto('Y')">
+              Y
+            </button>
+            <button class="btnGreen btn" onclick="validarAcerto('G')">G</button>
+          </div>
+        </div>
+
+        <div class="content">
+          <div>
+            <button class="play">
+              <span class="material-icons">play_arrow</span>
+            </button>
+            <p class="txt-botoes">Jogar</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="display">
+        <p id="textDisplay">Teste</p>
+      </div>
+
+      <p id="pontuacao">Pontuação: 0</p>
+
+      <button id="ranking">
+        <span class="material-icons">workspace_premium</span>
+      </button>
+
+      <aside id="fundoRank">
+        <div id="tabelaRanking">
+          <button id="fecharRanking">
+            <span class="material-icons">close</span>
+          </button>
+
+          <h2 id="tituloRanking">Ranking</h2>
+
+          <div id="listaRanking"></div>
+        </div>
+      </aside>
+
+      <aside id="fundoRegistroRank">
+        <div id="registrarRanking">
+          <button id="fecharRegistroRanking">
+            <span class="material-icons">close</span>
+          </button>
+
+          <h2>Que pena...</h2>
+          <h3>Insira seu nome para registrar a pontuação</h3>
+
+          <div id="registrarNome">
+            <input class="letras" id="letra1" placeholder="A" maxlength="1" />
+            <input class="letras" id="letra2" placeholder="A" maxlength="1" />
+            <input class="letras" id="letra3" placeholder="A" maxlength="1" />
+          </div>
+
+          <button class="salvarNome" id="salvarRanking">SALVAR</button>
+          <p id="avisoNome">Preencha todos os campos</p>
+        </div>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
