@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sixtyfour&display=swap");
 
+
+/* ==================== RESET ==================== */
+
 * {
   padding: 0;
   margin: 0;
@@ -16,6 +19,9 @@ body {
   overflow: hidden;
 }
 
+
+/* ==================== ESTRUTURA PRINCIPAL ==================== */
+
 main {
   width: 100%;
   height: 100dvh;
@@ -27,6 +33,28 @@ main {
   flex-direction: column;
   overflow: hidden;
 }
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 5vmin;
+}
+
+
+/* ==================== TÍTULO ==================== */
+
+.title {
+  color: white;
+  font-size: 6vmin;
+  margin: 2vmin;
+  text-shadow: 0 0 15px black;
+}
+
+
+/* ==================== BOTÕES DE CORES ==================== */
 
 .btnGroup {
   display: flex;
@@ -57,7 +85,11 @@ main {
   font-weight: bold;
   color: rgba(255, 255, 255, 0.288);
   cursor: pointer;
+  image-rendering: pixelated;
 }
+
+
+/* ==================== BOTÃO VERMELHO ==================== */
 
 .btnRed {
   background-image: radial-gradient(red, rgb(165, 1, 1));
@@ -72,6 +104,9 @@ main {
   color: rgba(255, 255, 255, 0.089);
 }
 
+
+/* ==================== BOTÃO AZUL ==================== */
+
 .btnBlue {
   background-image: radial-gradient(rgb(51, 38, 231), rgb(9, 7, 117));
   box-shadow: 0px 0.9vmin 0 0.6vmin rgb(16, 0, 73);
@@ -84,6 +119,9 @@ main {
   transform: translateY(0.6vmin);
   color: rgba(255, 255, 255, 0.089);
 }
+
+
+/* ==================== BOTÃO AMARELO ==================== */
 
 .btnYellow {
   background-image: radial-gradient(rgb(226, 205, 12), rgb(204, 157, 2));
@@ -98,6 +136,9 @@ main {
   color: rgba(255, 255, 255, 0.089);
 }
 
+
+/* ==================== BOTÃO VERDE ==================== */
+
 .btnGreen {
   background-image: radial-gradient(rgb(75, 216, 10), rgb(7, 117, 22));
   box-shadow: 0px 0.9vmin 0 0.6vmin rgb(9, 73, 0);
@@ -111,12 +152,8 @@ main {
   color: rgba(255, 255, 255, 0.089);
 }
 
-.title {
-  color: white;
-  font-size: 6vmin;
-  margin: 2vmin;
-  text-shadow: 0 0 15px black;
-}
+
+/* ==================== DISPLAY ==================== */
 
 .display {
   width: 55vmin;
@@ -142,14 +179,8 @@ main {
   user-select: none;
 }
 
-.content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 5vmin;
-}
+
+/* ==================== INDICADOR ==================== */
 
 #indicador {
   margin: 5px;
@@ -180,6 +211,9 @@ main {
   font-weight: bold;
   display: none;
 }
+
+
+/* ==================== BOTÃO JOGAR ==================== */
 
 .play {
   margin: 5px;
@@ -222,11 +256,17 @@ main {
   user-select: none;
 }
 
+
+/* ==================== PONTUAÇÃO ==================== */
+
 #pontuacao {
   color: rgb(255, 208, 0);
   text-shadow: 0px 0px 10px rgb(255, 208, 0);
   font-family: Sixtyfour;
 }
+
+
+/* ==================== BOTÃO RANKING ==================== */
 
 #ranking {
   background-image: radial-gradient(rgb(226, 205, 12), rgb(204, 157, 2));
@@ -248,7 +288,18 @@ main {
   font-size: 250%;
 }
 
-/* TABELA RANKING */
+
+/* ==================== MODAL DO RANKING ==================== */
+
+#fundoRank {
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
 
 #tabelaRanking {
   width: 80%;
@@ -258,6 +309,52 @@ main {
   border-radius: 20px;
   color: white;
   padding: 20px;
+}
+
+#tituloRanking {
+  text-align: center;
+  font-family: "Sixtyfour";
+  color: #ffd000;
+}
+
+#fecharRanking {
+  background-color: transparent;
+  color: red;
+  border: none;
+  cursor: pointer;
+  text-align: end;
+  width: 100%;
+}
+
+
+/* ==================== LISTA DO RANKING ==================== */
+
+#nomeRanking {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+#nomeRanking span {
+  color: white;
+  font-family: "Sixtyfour";
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* ==================== MODAL DE REGISTRO ==================== */
+
+#fundoRegistroRank {
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 #registrarRanking {
@@ -271,35 +368,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-#fundoRank {
-  position: absolute;
-  width: 100dvw;
-  height: 100dvh;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-#fecharRanking {
-  background-color: transparent;
-  color: red;
-  border: none;
-  cursor: pointer;
-  text-align: end;
-  width: 100%;
-}
-
-#fundoRegistroRank {
-  position: absolute;
-  width: 100dvw;
-  height: 100dvh;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: none;
-  justify-content: center;
-  align-items: center;
 }
 
 #fecharRegistroRanking {
@@ -318,12 +386,13 @@ main {
 
 #registrarRanking h3 {
   color: white;
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: normal;
   text-align: center;
 }
 
-/* NOME */
+
+/* ==================== REGISTRO DO NOME ==================== */
 
 #registrarNome {
   display: flex;
@@ -366,6 +435,10 @@ main {
   align-items: center;
 }
 
+.salvarNome:hover {
+  color: rgb(255, 208, 0);
+}
+
 #avisoNome {
   display: none;
   color: rgb(255, 208, 0);
@@ -373,32 +446,8 @@ main {
   font-size: 0.9em;
 }
 
-.salvarNome:hover {
-  color: rgb(255, 208, 0);
-}
 
-#tituloRanking {
-  text-align: center;
-  font-family: "Sixtyfour";
-  color: rgb(255, 208, 0);
-}
-
-#nomeRanking {
-  display: flex;
-  justify-content: space-between;
-  margin: 10px 0px
-}
-
-#nomeRanking span{
-  color: white;
-  font-family: "Sixtyfour";
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* MEDIA QUERY */
+/* ==================== RESPONSIVIDADE ==================== */
 
 @media (max-width: 628px) {
   .display {
