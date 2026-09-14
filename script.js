@@ -1,4 +1,4 @@
-let textDisplay = document.getElementById("textDisplay");
+/* ==================== VARIÁVEIS DO JOGO ==================== */
 
 let sequencia = [];
 
@@ -12,31 +12,54 @@ let pontuacao = 0;
 
 let ultimaPontuacao = 0;
 
-let letra1 = document.getElementById("letra1");
-let letra2 = document.getElementById("letra2");
-let letra3 = document.getElementById("letra3");
+
+/* ==================== ELEMENTOS DO JOGO ==================== */
+
+let textDisplay = document.getElementById("textDisplay");
 
 let TextoPontuacao = document.getElementById("pontuacao");
 
-let ranking = [];
+let indicador = document.getElementById("indicador");
 
 let botaoPlay = document.querySelector(".play");
-botaoPlay.addEventListener("click", iniciarJogo);
+
+
+/* ==================== ELEMENTOS DO RANKING ==================== */
+
+let ranking = [];
 
 let botaoRanking = document.getElementById("ranking");
-botaoRanking.addEventListener("click", abrirRanking);
 
 let fecharRanking = document.getElementById("fecharRanking");
-fecharRanking.addEventListener("click", fecharRank);
 
 let fecharRegistroRanking = document.getElementById("fecharRegistroRanking");
-fecharRegistroRanking.addEventListener("click", fecharRegistroRank);
 
 let salvarRanking = document.getElementById("salvarRanking");
 
+
+/* ==================== ELEMENTOS DO NOME ==================== */
+
+let letra1 = document.getElementById("letra1");
+
+let letra2 = document.getElementById("letra2");
+
+let letra3 = document.getElementById("letra3");
+
+
+/* ==================== EVENTOS DOS BOTÕES ==================== */
+
+botaoPlay.addEventListener("click", iniciarJogo);
+
+botaoRanking.addEventListener("click", abrirRanking);
+
+fecharRanking.addEventListener("click", fecharRank);
+
+fecharRegistroRanking.addEventListener("click", fecharRegistroRank);
+
 salvarRanking.addEventListener("click", pegarNome);
 
-let indicador = document.getElementById("indicador");
+
+/* ==================== SORTEIO DA SEQUÊNCIA ==================== */
 
 function sortearCor() {
   let idNovaCor = Math.random() * 4;
@@ -47,6 +70,9 @@ function sortearCor() {
 
   sequencia.push(novaCor);
 }
+
+
+/* ==================== VALIDAÇÃO DA JOGADA ==================== */
 
 function validarAcerto(corClicada) {
   let corCerta = sequencia[posicaoJogador];
@@ -69,6 +95,9 @@ function validarAcerto(corClicada) {
     }
   }
 }
+
+
+/* ==================== EXIBIÇÃO DA SEQUÊNCIA ==================== */
 
 function percorrerSequencia(i = 0) {
   textDisplay.innerHTML = "Observe a sequência...";
@@ -126,6 +155,9 @@ function percorrerSequencia(i = 0) {
   }, 1000);
 }
 
+
+/* ==================== INICIAR JOGO ==================== */
+
 function iniciarJogo() {
   TextoPontuacao.innerHTML = `Pontuação: ${pontuacao}`;
 
@@ -137,6 +169,9 @@ function iniciarJogo() {
   sortearCor();
   percorrerSequencia();
 }
+
+
+/* ==================== ANIMAÇÃO DE ACERTO ==================== */
 
 function animacaoAcerto() {
   textDisplay.innerHTML = "Correto!";
@@ -170,6 +205,9 @@ function animacaoAcerto() {
   }
 }
 
+
+/* ==================== ANIMAÇÃO DE ERRO ==================== */
+
 function animacaoErro() {
   TextoPontuacao.innerHTML = `Pontuação: 0`;
   textDisplay.innerHTML = "Errado!";
@@ -192,28 +230,21 @@ function animacaoErro() {
   }
 }
 
+
+/* ==================== RANKING ==================== */
+
 function abrirRanking() {
   let modalRank = document.getElementById("fundoRank");
 
   modalRank.style.display = "flex";
+
   ordenarRanking();
+
   atualizarRanking();
 }
 
 function fecharRank() {
   let modalRank = document.getElementById("fundoRank");
-
-  modalRank.style.display = "none";
-}
-
-function abrirRegistroRanking() {
-  let modalRank = document.getElementById("fundoRegistroRank");
-
-  modalRank.style.display = "flex";
-}
-
-function fecharRegistroRank() {
-  let modalRank = document.getElementById("fundoRegistroRank");
 
   modalRank.style.display = "none";
 }
@@ -246,23 +277,46 @@ function atualizarRanking() {
   }
 }
 
+
+/* ==================== REGISTRO DA PONTUAÇÃO ==================== */
+
+function abrirRegistroRanking() {
+  let modalRank = document.getElementById("fundoRegistroRank");
+
+  modalRank.style.display = "flex";
+}
+
+function fecharRegistroRank() {
+  let modalRank = document.getElementById("fundoRegistroRank");
+
+  modalRank.style.display = "none";
+}
+
 function pegarNome() {
   let valorLetra1 = letra1.value;
+
   let valorLetra2 = letra2.value;
+
   let valorLetra3 = letra3.value;
 
   if (!valorLetra1 || !valorLetra2 || !valorLetra3) {
     let aviso = document.getElementById("avisoNome");
+
     aviso.style.display = "block";
   } else {
     let nome = valorLetra1 + valorLetra2 + valorLetra3;
+
     ranking.push({
       nome: nome,
       pontuacao: ultimaPontuacao,
     });
+
     fecharRegistroRank();
   }
 }
+
+
+/* ==================== NAVEGAÇÃO ENTRE INPUTS ==================== */
 
 letra1.addEventListener("input", () => {
   if (letra1.value) {
@@ -276,6 +330,9 @@ letra2.addEventListener("input", () => {
   }
 });
 
+
+/* ==================== VOLTAR COM BACKSPACE ==================== */
+
 letra3.addEventListener("keydown", (e) => {
   if (e.key === "Backspace" && !letra3.value) {
     letra2.focus();
@@ -287,6 +344,9 @@ letra2.addEventListener("keydown", (e) => {
     letra1.focus();
   }
 });
+
+
+/* ==================== CONFIRMAR COM ENTER ==================== */
 
 letra3.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
