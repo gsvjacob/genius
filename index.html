@@ -17,11 +17,11 @@
 
       <div class="content">
         <div>
-            <div id="indicador">
-              <div id="indicadorPNG"></div>
-              <span class="material-icons" id="iconeAcerto">check</span>
-              <span class="material-icons" id="iconeErro">close</span>
-            </div>
+          <div id="indicador">
+            <div id="indicadorPNG"></div>
+            <span class="material-icons" id="iconeAcerto">check</span>
+            <span class="material-icons" id="iconeErro">close</span>
+          </div>
         </div>
 
         <div class="btnGroup">
@@ -50,9 +50,10 @@
         <p id="textDisplay">Teste</p>
       </div>
 
-      <p id="pontuacao">Pontuação: 0</p>
-
-      <button id="ranking"></button>
+      <div id="floatBtn">
+        <button id="ranking"></button>
+        <button id="config"></button>
+      </div>
 
       <aside id="fundoRank">
         <div id="tabelaRanking">
@@ -60,9 +61,29 @@
             <span class="material-icons">close</span>
           </button>
 
-          <h2 id="tituloRanking">Ranking</h2>
+          <h2 class="tituloModal">Ranking</h2>
 
           <div id="listaRanking"></div>
+        </div>
+      </aside>
+
+      <aside id="fundoConfig">
+        <div id="boxConfig">
+
+          <button id="fecharConfig">
+            <span class="material-icons">close</span>
+          </button>
+          <h2 class="tituloModal">Config</h2>
+
+          <div class="linhaCheckbox">
+            <label for="crt">Efeito CRT</label>
+            <input type="checkbox" name="crt" id="crtID" checked />
+          </div>
+          <div class="linhaCheckbox">
+            <label for="crt">Música</label>
+            <input type="checkbox" name="musica" id="musicaID" checked />
+          </div>
+
         </div>
       </aside>
 

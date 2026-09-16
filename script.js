@@ -12,7 +12,6 @@ let pontuacao = 0;
 
 let ultimaPontuacao = 0;
 
-
 /* ==================== ELEMENTOS DO JOGO ==================== */
 
 let textDisplay = document.getElementById("textDisplay");
@@ -23,19 +22,27 @@ let indicador = document.getElementById("indicador");
 
 let botaoPlay = document.querySelector(".play");
 
-
 /* ==================== ELEMENTOS DO RANKING ==================== */
 
 let ranking = [];
 
 let botaoRanking = document.getElementById("ranking");
 
-let fecharRanking = document.getElementById("fecharRanking");
+let botaoFecharRanking = document.getElementById("fecharRanking");
 
 let fecharRegistroRanking = document.getElementById("fecharRegistroRanking");
 
 let salvarRanking = document.getElementById("salvarRanking");
 
+/* ==================== ELEMENTOS DAS CONFIGS ==================== */
+
+let botaoConfig = document.getElementById("config");
+
+let botaoFecharConfig = document.getElementById("fecharConfig");
+
+let crt = document.getElementById("crtID");
+
+let efeito = document.querySelector(".crt");
 
 /* ==================== ELEMENTOS DO NOME ==================== */
 
@@ -45,19 +52,23 @@ let letra2 = document.getElementById("letra2");
 
 let letra3 = document.getElementById("letra3");
 
-
 /* ==================== EVENTOS DOS BOTÕES ==================== */
 
 botaoPlay.addEventListener("click", iniciarJogo);
 
 botaoRanking.addEventListener("click", abrirRanking);
 
-fecharRanking.addEventListener("click", fecharRank);
+botaoFecharRanking.addEventListener("click", fecharRank);
 
 fecharRegistroRanking.addEventListener("click", fecharRegistroRank);
 
+botaoConfig.addEventListener("click", abrirConfig);
+
+botaoFecharConfig.addEventListener("click", fecharConfig);
+
 salvarRanking.addEventListener("click", pegarNome);
 
+crt.addEventListener("change", desligarCrt);
 
 /* ==================== SORTEIO DA SEQUÊNCIA ==================== */
 
@@ -70,7 +81,6 @@ function sortearCor() {
 
   sequencia.push(novaCor);
 }
-
 
 /* ==================== VALIDAÇÃO DA JOGADA ==================== */
 
@@ -95,7 +105,6 @@ function validarAcerto(corClicada) {
     }
   }
 }
-
 
 /* ==================== EXIBIÇÃO DA SEQUÊNCIA ==================== */
 
@@ -137,13 +146,13 @@ function percorrerSequencia(i = 0) {
   }
 
   if (sequencia[i] == "R") {
-    indicador.style.backgroundColor = "red";
+    indicador.style.backgroundColor = "#eb0c0c";
   } else if (sequencia[i] == "B") {
-    indicador.style.backgroundColor = "blue";
+    indicador.style.backgroundColor = "#0c40eb";
   } else if (sequencia[i] == "Y") {
-    indicador.style.backgroundColor = "yellow";
+    indicador.style.backgroundColor = "#f0c505";
   } else if (sequencia[i] == "G") {
-    indicador.style.backgroundColor = "rgb(0, 255, 0)";
+    indicador.style.backgroundColor = "#40eb0c";
   }
 
   setTimeout(() => {
@@ -155,11 +164,10 @@ function percorrerSequencia(i = 0) {
   }, 1000);
 }
 
-
 /* ==================== INICIAR JOGO ==================== */
 
 function iniciarJogo() {
-  TextoPontuacao.innerHTML = `Pontuação: ${pontuacao}`;
+  textDisplay.innerHTML = `PTS: ${pontuacao}`;
 
   sequencia = [];
   jogando = false;
@@ -170,7 +178,6 @@ function iniciarJogo() {
   percorrerSequencia();
 }
 
-
 /* ==================== ANIMAÇÃO DE ACERTO ==================== */
 
 function animacaoAcerto() {
@@ -179,11 +186,11 @@ function animacaoAcerto() {
   let iconeAcerto = document.getElementById("iconeAcerto");
 
   for (let i = 0; i <= 3; i++) {
-    TextoPontuacao.innerHTML = `Pontuação: ${pontuacao}`;
+    textDisplay.innerHTML = `PTS: ${pontuacao}`;
 
     setTimeout(() => {
       iconeAcerto.style.display = "block";
-      indicador.style.backgroundColor = "rgb(0, 255, 0)";
+      indicador.style.backgroundColor = "#40eb0c";
     }, i * 200);
 
     setTimeout(
@@ -205,11 +212,9 @@ function animacaoAcerto() {
   }
 }
 
-
 /* ==================== ANIMAÇÃO DE ERRO ==================== */
 
 function animacaoErro() {
-  TextoPontuacao.innerHTML = `Pontuação: 0`;
   textDisplay.innerHTML = "Errado!";
 
   let iconeErro = document.getElementById("iconeErro");
@@ -217,7 +222,7 @@ function animacaoErro() {
   for (let i = 0; i <= 3; i++) {
     setTimeout(() => {
       iconeErro.style.display = "block";
-      indicador.style.backgroundColor = "red";
+      indicador.style.backgroundColor = "#eb0c0c";
     }, i * 200);
 
     setTimeout(
@@ -229,7 +234,6 @@ function animacaoErro() {
     );
   }
 }
-
 
 /* ==================== RANKING ==================== */
 
@@ -277,6 +281,29 @@ function atualizarRanking() {
   }
 }
 
+/* ==================== CONFIG ==================== */
+
+function abrirConfig() {
+  let modalConfig = document.getElementById("fundoConfig");
+
+  modalConfig.style.display = "flex";
+}
+
+function fecharConfig() {
+  let modalConfig = document.getElementById("fundoConfig");
+
+  modalConfig.style.display = "none";
+}
+
+/* ==================== CONFIG: DESLIGAR CRT ==================== */
+
+function desligarCrt() {
+  if (crt.checked === false) {
+    efeito.classList.remove("crt");
+  } else if (crt.checked === true) {
+    efeito.classList.add("crt");
+  }
+}
 
 /* ==================== REGISTRO DA PONTUAÇÃO ==================== */
 
@@ -315,7 +342,6 @@ function pegarNome() {
   }
 }
 
-
 /* ==================== NAVEGAÇÃO ENTRE INPUTS ==================== */
 
 letra1.addEventListener("input", () => {
@@ -330,7 +356,6 @@ letra2.addEventListener("input", () => {
   }
 });
 
-
 /* ==================== VOLTAR COM BACKSPACE ==================== */
 
 letra3.addEventListener("keydown", (e) => {
@@ -344,7 +369,6 @@ letra2.addEventListener("keydown", (e) => {
     letra1.focus();
   }
 });
-
 
 /* ==================== CONFIRMAR COM ENTER ==================== */
 
