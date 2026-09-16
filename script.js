@@ -161,7 +161,7 @@ function percorrerSequencia(i = 0) {
     setTimeout(() => {
       percorrerSequencia(i + 1);
     }, 200);
-  }, 1000);
+  }, 500);
 }
 
 /* ==================== INICIAR JOGO ==================== */
