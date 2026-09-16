@@ -338,6 +338,9 @@ function pegarNome() {
       pontuacao: ultimaPontuacao,
     });
 
+    letra1.value = ""
+    letra2.value = ""
+    letra3.value = ""
     fecharRegistroRank();
   }
 }
