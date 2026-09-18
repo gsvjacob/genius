@@ -1,3 +1,10 @@
+/* ==================== BANCO DE DADOS (SUPABASE) ==================== */
+
+const supabaseUrl = "https://izpvrcqjbzuxfykczkej.supabase.co";
+const supabaseKey = "sb_publishable_Abn-URkWKbRISYflxOXH3w_IOdi9jpB";
+
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
 /* ==================== VARIÁVEIS DO JOGO ==================== */
 
 let sequencia = [];
@@ -24,8 +31,6 @@ let botaoPlay = document.querySelector(".play");
 
 /* ==================== ELEMENTOS DO RANKING ==================== */
 
-let ranking = [];
-
 let botaoRanking = document.getElementById("ranking");
 
 let botaoFecharRanking = document.getElementById("fecharRanking");
@@ -33,6 +38,8 @@ let botaoFecharRanking = document.getElementById("fecharRanking");
 let fecharRegistroRanking = document.getElementById("fecharRegistroRanking");
 
 let salvarRanking = document.getElementById("salvarRanking");
+
+let aviso = document.getElementById("avisoNome");
 
 /* ==================== ELEMENTOS DAS CONFIGS ==================== */
 
@@ -242,8 +249,6 @@ function abrirRanking() {
 
   modalRank.style.display = "flex";
 
-  ordenarRanking();
-
   atualizarRanking();
 }
 
@@ -253,29 +258,28 @@ function fecharRank() {
   modalRank.style.display = "none";
 }
 
-function ordenarRanking() {
-  ranking = ranking.sort((a, b) => {
-    if (a.pontuacao < b.pontuacao) {
-      return 1;
-    } else if (a.pontuacao == b.pontuacao) {
-      return 0;
-    } else {
-      return -1;
-    }
-  });
-}
+async function atualizarRanking() {
+  const { data, error } = await supabaseClient
+    .from("ranking")
+    .select("nome, pontuacao")
+    .order("pontuacao", { ascending: false })
+    .limit(15);
 
-function atualizarRanking() {
   let listaRanking = document.getElementById("listaRanking");
 
   listaRanking.innerHTML = "";
 
-  for (let i = 0; i < ranking.length; i++) {
+  if (error) {
+    console.log(error);
+    return;
+  }
+
+  for (let i = 0; i < data.length; i++) {
     listaRanking.innerHTML += `
       <div id="nomeRanking">
         <span>${i + 1}º</span>
-        <span>${ranking[i].nome}</span>
-        <span>${ranking[i].pontuacao}</span>
+        <span>${data[i].nome}</span>
+        <span>${data[i].pontuacao}</span>
       </div>
     `;
   }
@@ -319,7 +323,7 @@ function fecharRegistroRank() {
   modalRank.style.display = "none";
 }
 
-function pegarNome() {
+async function pegarNome() {
   let valorLetra1 = letra1.value;
 
   let valorLetra2 = letra2.value;
@@ -327,20 +331,24 @@ function pegarNome() {
   let valorLetra3 = letra3.value;
 
   if (!valorLetra1 || !valorLetra2 || !valorLetra3) {
-    let aviso = document.getElementById("avisoNome");
-
     aviso.style.display = "block";
   } else {
     let nome = valorLetra1 + valorLetra2 + valorLetra3;
 
-    ranking.push({
+    const { error } = await supabaseClient.from("ranking").insert({
       nome: nome,
       pontuacao: ultimaPontuacao,
     });
 
-    letra1.value = ""
-    letra2.value = ""
-    letra3.value = ""
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    letra1.value = "";
+    letra2.value = "";
+    letra3.value = "";
+    aviso.style.display = "none";
     fecharRegistroRank();
   }
 }
