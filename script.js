@@ -263,7 +263,7 @@ async function atualizarRanking() {
     .from("ranking")
     .select("nome, pontuacao")
     .order("pontuacao", { ascending: false })
-    .limit(15);
+    .limit(10);
 
   let listaRanking = document.getElementById("listaRanking");
 
