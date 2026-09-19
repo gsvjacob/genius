@@ -53,7 +53,11 @@ let efeito = document.querySelector(".crt");
 
 let musica = document.getElementById("musicaID");
 
-let backgroundMusic = document.getElementById("backgroundMusic")
+let backgroundMusic = document.getElementById("backgroundMusic");
+
+let volumeMusica = document.getElementById("volumeMusicaID");
+
+let linhaVolumeMusica = document.getElementById("linhaVolume");
 
 /* ==================== ELEMENTOS DO NOME ==================== */
 
@@ -82,6 +86,8 @@ salvarRanking.addEventListener("click", pegarNome);
 crt.addEventListener("change", desligarCrt);
 
 musica.addEventListener("change", desligarMusica);
+
+volumeMusica.addEventListener("change", alterarVolumeMusica);
 
 /* ==================== SORTEIO DA SEQUÊNCIA ==================== */
 
@@ -320,8 +326,20 @@ function desligarCrt() {
 function desligarMusica() {
   if (musica.checked === false) {
     backgroundMusic.pause();
-  } else if (crt.checked === true) {
+    linhaVolumeMusica.style.display = "none";
+  } else if (musica.checked === true) {
     backgroundMusic.play();
+    linhaVolumeMusica.style.display = "flex"
+  }
+}
+
+/* ==================== CONFIG: VOLUME MÚSICA ==================== */
+
+function alterarVolumeMusica() {
+  if (musica.checked === true) {
+    backgroundMusic.volume = volumeMusica.value;
+  } else if (musica.checked === false) {
+    return
   }
 }
 
