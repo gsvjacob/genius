@@ -51,6 +51,10 @@ let crt = document.getElementById("crtID");
 
 let efeito = document.querySelector(".crt");
 
+let musica = document.getElementById("musicaID");
+
+let backgroundMusic = document.getElementById("backgroundMusic")
+
 /* ==================== ELEMENTOS DO NOME ==================== */
 
 let letra1 = document.getElementById("letra1");
@@ -76,6 +80,8 @@ botaoFecharConfig.addEventListener("click", fecharConfig);
 salvarRanking.addEventListener("click", pegarNome);
 
 crt.addEventListener("change", desligarCrt);
+
+musica.addEventListener("change", desligarMusica);
 
 /* ==================== SORTEIO DA SEQUÊNCIA ==================== */
 
@@ -309,6 +315,16 @@ function desligarCrt() {
   }
 }
 
+/* ==================== CONFIG: DESLIGAR MÚSICA ==================== */
+
+function desligarMusica() {
+  if (musica.checked === false) {
+    backgroundMusic.pause();
+  } else if (crt.checked === true) {
+    backgroundMusic.play();
+  }
+}
+
 /* ==================== REGISTRO DA PONTUAÇÃO ==================== */
 
 function abrirRegistroRanking() {
@@ -388,3 +404,5 @@ letra3.addEventListener("keydown", (e) => {
     pegarNome();
   }
 });
+
+
