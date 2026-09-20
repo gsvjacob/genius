@@ -153,6 +153,7 @@ function validarAcerto(corClicada) {
 /* ==================== EXIBIÇÃO DA SEQUÊNCIA ==================== */
 
 function percorrerSequencia(i = 0) {
+  jogando = false;
   textDisplay.innerHTML = "Observe a sequência...";
   textDisplay.style.fontSize = "3.5vmin";
 
