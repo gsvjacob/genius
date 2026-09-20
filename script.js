@@ -59,6 +59,28 @@ let volumeMusica = document.getElementById("volumeMusicaID");
 
 let linhaVolumeMusica = document.getElementById("linhaVolume");
 
+/* ==================== ELEMENTOS DE SOM ==================== */
+
+let somPlay = document.getElementById("somPlay");
+
+let somClick = document.getElementById("somClick");
+
+let somCerto = document.getElementById("somCerto");
+
+let somErrado = document.getElementById("somErrado");
+
+let somCor = document.getElementById("somCor");
+
+botaoPlay.addEventListener("click", () => {
+  somPlay.volume = 0.3;
+  somPlay.play();
+});
+
+document.querySelector(".btnRed").addEventListener("click", tocarSomClick);
+document.querySelector(".btnBlue").addEventListener("click", tocarSomClick);
+document.querySelector(".btnYellow").addEventListener("click", tocarSomClick);
+document.querySelector(".btnGreen").addEventListener("click", tocarSomClick);
+
 /* ==================== ELEMENTOS DO NOME ==================== */
 
 let letra1 = document.getElementById("letra1");
@@ -201,6 +223,8 @@ function iniciarJogo() {
 
 function animacaoAcerto() {
   textDisplay.innerHTML = "Correto!";
+  somCerto.volume = 0.3;
+  somCerto.play();
 
   let iconeAcerto = document.getElementById("iconeAcerto");
 
@@ -235,6 +259,8 @@ function animacaoAcerto() {
 
 function animacaoErro() {
   textDisplay.innerHTML = "Errado!";
+  somErrado.volume = 0.3;
+  somErrado.play();
 
   let iconeErro = document.getElementById("iconeErro");
 
@@ -329,18 +355,28 @@ function desligarMusica() {
     linhaVolumeMusica.style.display = "none";
   } else if (musica.checked === true) {
     backgroundMusic.play();
-    linhaVolumeMusica.style.display = "flex"
+    linhaVolumeMusica.style.display = "flex";
   }
 }
 
 /* ==================== CONFIG: VOLUME MÚSICA ==================== */
 
+backgroundMusic.volume = 0.1;
+
 function alterarVolumeMusica() {
   if (musica.checked === true) {
     backgroundMusic.volume = volumeMusica.value;
   } else if (musica.checked === false) {
-    return
+    return;
   }
+}
+
+/* ==================== SOM CLICK ==================== */
+
+function tocarSomClick() {
+  somClick.currentTime = 0;
+  somClick.volume = 0.3;
+  somClick.play();
 }
 
 /* ==================== REGISTRO DA PONTUAÇÃO ==================== */
@@ -422,5 +458,3 @@ letra3.addEventListener("keydown", (e) => {
     pegarNome();
   }
 });
-
-
