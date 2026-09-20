@@ -74,6 +74,9 @@ let somCor = document.getElementById("somCor");
 botaoPlay.addEventListener("click", () => {
   somPlay.volume = 0.3;
   somPlay.play();
+  if (musica.checked) {
+    backgroundMusic.play();
+  }
 });
 
 document.querySelector(".btnRed").addEventListener("click", tocarSomClick);
