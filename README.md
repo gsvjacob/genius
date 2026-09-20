@@ -1,4 +1,4 @@
-# 🎮 Genius (V2)
+# 🎮 Genius (v2)
 
 Uma recriação do clássico jogo **Genius (Simon)** desenvolvida com **HTML, CSS e JavaScript**, com uma interface inspirada em máquinas de arcade retrô.
 
