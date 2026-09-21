@@ -148,7 +148,7 @@ function sortearCorMuitoDificil() {
 
     let idNovaCor = Math.random() * 4;
 
-      idNovaCor = Math.floor(idNovaCor);
+    idNovaCor = Math.floor(idNovaCor);
 
     let novaCor = cores[idNovaCor];
 
@@ -443,9 +443,9 @@ async function atualizarRanking() {
   for (let i = 0; i < data.length; i++) {
     listaRanking.innerHTML += `
       <div id="nomeRanking">
-        <span>${i + 1}º</span>
-        <span>${data[i].nome}</span>
-        <span>${data[i].pontuacao}</span>
+        <span class="${ i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : "" }">${i + 1}º</span>
+        <span class="${ i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : "" }">${data[i].nome}</span>
+        <span class="${ i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : "" }">${data[i].pontuacao}</span>
       </div>
     `;
   }
