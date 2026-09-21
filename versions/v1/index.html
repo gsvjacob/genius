@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,23 +12,12 @@
   </head>
 
   <body>
-
-    <!-- ========== SONS DO JOGO ========== -->
-    <audio src="./audios/background.mp3" loop autoplay id="backgroundMusic"></audio>
-    <audio src="./audios/play.wav" id="somPlay"></audio>
-    <audio src="./audios/buttonClick.wav" id="somClick"></audio>
-    <audio src="./audios/color.wav" id="somCor"></audio>
-    <audio src="./audios/correct.wav" id="somCerto"></audio>
-    <audio src="./audios/error.wav" id="somErrado"></audio>
-
-    <!-- ========== CÓDIGO ========== -->
-    <main class="crt">
+    <main>
       <h1 class="title">Genius</h1>
 
       <div class="content">
         <div>
           <div id="indicador">
-            <div id="indicadorPNG"></div>
             <span class="material-icons" id="iconeAcerto">check</span>
             <span class="material-icons" id="iconeErro">close</span>
           </div>
@@ -50,7 +39,9 @@
 
         <div class="content">
           <div>
-            <button class="play"></button>
+            <button class="play">
+              <span class="material-icons">play_arrow</span>
+            </button>
             <p class="txt-botoes">Jogar</p>
           </div>
         </div>
@@ -60,10 +51,11 @@
         <p id="textDisplay">Teste</p>
       </div>
 
-      <div id="floatBtn">
-        <button id="ranking"></button>
-        <button id="config"></button>
-      </div>
+      <p id="pontuacao">Pontuação: 0</p>
+
+      <button id="ranking">
+        <span class="material-icons">workspace_premium</span>
+      </button>
 
       <aside id="fundoRank">
         <div id="tabelaRanking">
@@ -71,36 +63,9 @@
             <span class="material-icons">close</span>
           </button>
 
-          <h2 class="tituloModal">Ranking</h2>
+          <h2 id="tituloRanking">Ranking</h2>
 
           <div id="listaRanking"></div>
-        </div>
-      </aside>
-
-      <aside id="fundoConfig">
-        <div id="boxConfig">
-          <button id="fecharConfig">
-            <span class="material-icons">close</span>
-          </button>
-          <h2 class="tituloModal">Config</h2>
-
-          <div class="linhaCheckbox">
-            <label for="crt">Efeito CRT</label>
-            <input type="checkbox" name="crt" id="crtID" checked />
-          </div>
-          <div class="linhaCheckbox">
-            <label for="musica">Música</label>
-            <input type="checkbox" name="musica" id="musicaID" checked />
-          </div>
-          <div class="linhaCheckbox" id="linhaVolume">
-            <label for="volumeMusica">Volume da Música</label>
-            <input type="range" name="volumeMusica" id="volumeMusicaID" min="0.1" max="1" step="0.1" value="0.1"/>
-          </div>
-          <br><br>
-          <div class="linhaCheckbox">
-            <a href="./versions/v1/index.html">V1</a>
-            <a href="./versions/v2/index.html">V2</a>
-          </div>
         </div>
       </aside>
 
@@ -125,7 +90,6 @@
       </aside>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
   </body>
 </html>

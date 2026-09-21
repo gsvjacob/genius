@@ -229,7 +229,7 @@ main {
   border: none;
   transition-duration: 0.1s;
   font-size: 10vmin;
-  background-image: url(./images/indicador.png);
+  background-image: url(../../images/indicador.png);
   background-size: contain;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -270,7 +270,7 @@ main {
   border: none;
   font-size: 10vmin;
   cursor: pointer;
-  background-image: url(./images/play.png);
+  background-image: url(../../images/play.png);
   background-size: contain;
   background-color: transparent;
   display: flex;
@@ -323,7 +323,7 @@ main {
 /* ==================== BOTÃO CONFIG ==================== */
 
 #config {
-  background-image: url(./images/config.png);
+  background-image: url(../../images/config.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -344,7 +344,7 @@ main {
 /* ==================== BOTÃO RANKING ==================== */
 
 #ranking {
-  background-image: url(./images/trophy.png);
+  background-image: url(../../images/trophy.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
@@ -476,16 +476,6 @@ input[type="range"]::-webkit-slider-thumb {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2vmin;
-}
-
-.linhaCheckbox a {
-  text-decoration: none;
-  color: #ffd000;
-}
-
-.linhaCheckbox a:hover {
-  text-decoration: underline;
-  color: #9e6a09;
 }
 
 /* ==================== LISTA DO RANKING ==================== */

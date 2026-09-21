@@ -1,0 +1,484 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sixtyfour&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family:
+    "Montserrat", "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+main {
+  width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  background-image: radial-gradient(rgb(59, 59, 59), rgb(17, 17, 17));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2vmin;
+}
+
+.row1,
+.row2 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vmin;
+}
+
+.btn {
+  margin: 5px;
+  width: 25vmin;
+  height: 25vmin;
+  border-radius: 2.5vmin;
+  border: none;
+  transition-duration: 0.1s;
+  font-size: 10vmin;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.288);
+  cursor: pointer;
+}
+
+.btnRed {
+  background-image: radial-gradient(red, rgb(165, 1, 1));
+  box-shadow: 0px 0.9vmin 0 0.6vmin rgb(112, 0, 0);
+}
+
+.btnRed:active,
+.btnRed.btnRedActive {
+  background-image: radial-gradient(rgb(201, 2, 2), rgb(105, 0, 0));
+  box-shadow: 0px 0.5vmin 0 0.4vmin rgb(49, 0, 0);
+  transform: translateY(0.6vmin);
+  color: rgba(255, 255, 255, 0.089);
+}
+
+.btnBlue {
+  background-image: radial-gradient(rgb(51, 38, 231), rgb(9, 7, 117));
+  box-shadow: 0px 0.9vmin 0 0.6vmin rgb(16, 0, 73);
+}
+
+.btnBlue:active,
+.btnBlue.btnBlueActive {
+  background-image: radial-gradient(rgb(32, 2, 201), rgb(0, 2, 105));
+  box-shadow: 0px 0.5vmin 0 0.4vmin rgb(0, 3, 49);
+  transform: translateY(0.6vmin);
+  color: rgba(255, 255, 255, 0.089);
+}
+
+.btnYellow {
+  background-image: radial-gradient(rgb(226, 205, 12), rgb(204, 157, 2));
+  box-shadow: 0px 0.9vmin 0 0.6vmin rgb(73, 50, 0);
+}
+
+.btnYellow:active,
+.btnYellow.btnYellowActive {
+  background-image: radial-gradient(rgb(190, 172, 10), rgb(150, 115, 0));
+  box-shadow: 0px 0.5vmin 0 0.4vmin rgb(49, 40, 0);
+  transform: translateY(0.6vmin);
+  color: rgba(255, 255, 255, 0.089);
+}
+
+.btnGreen {
+  background-image: radial-gradient(rgb(75, 216, 10), rgb(7, 117, 22));
+  box-shadow: 0px 0.9vmin 0 0.6vmin rgb(9, 73, 0);
+}
+
+.btnGreen:active,
+.btnGreen.btnGreenActive {
+  background-image: radial-gradient(rgb(51, 160, 0), rgb(12, 99, 0));
+  box-shadow: 0px 0.5vmin 0 0.4vmin rgb(7, 32, 0);
+  transform: translateY(0.6vmin);
+  color: rgba(255, 255, 255, 0.089);
+}
+
+.title {
+  color: white;
+  font-size: 6vmin;
+  margin: 2vmin;
+  text-shadow: 0 0 15px black;
+}
+
+.display {
+  width: 55vmin;
+  min-height: 15vmin;
+  margin: 4vmin 2vmin;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.5vmin;
+  border: 0.6vmin solid rgb(54, 54, 54);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+
+#textDisplay {
+  color: rgb(255, 208, 0);
+  text-shadow: 0px 0px 5px rgb(255, 208, 0);
+  font-size: 5vmin;
+  word-wrap: break-word;
+  width: 100%;
+  text-align: center;
+  font-family: "Sixtyfour";
+  user-select: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 5vmin;
+}
+
+#indicador {
+  margin: 5px;
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 50%;
+  border: none;
+  transition-duration: 0.1s;
+  font-size: 10vmin;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 5px solid rgb(3, 3, 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#indicador #iconeAcerto {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 140%;
+  font-weight: bold;
+  display: none;
+}
+
+#indicador #iconeErro {
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 140%;
+  font-weight: bold;
+  display: none;
+}
+
+.play {
+  margin: 5px;
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 50%;
+  border: none;
+  font-size: 10vmin;
+  cursor: pointer;
+  background-image: radial-gradient(#00ff9d, #0c7a50);
+  box-shadow: 0px 0.9vmin 0 0.6vmin #04422a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: 0.1s;
+}
+
+.play span {
+  font-size: 125%;
+  color: #04422a;
+  user-select: none;
+}
+
+.play:active {
+  background-image: radial-gradient(#00ad6b, #06422b);
+  box-shadow: 0px 0.5vmin 0 0.4vmin #021f14;
+  transform: translateY(0.6vmin);
+}
+
+.play:active span {
+  color: #021f14;
+}
+
+.txt-botoes {
+  color: #00ff9d;
+  text-shadow: 0px 0px 10px #06422b;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  user-select: none;
+}
+
+#pontuacao {
+  color: rgb(255, 208, 0);
+  text-shadow: 0px 0px 10px rgb(255, 208, 0);
+  font-family: Sixtyfour;
+}
+
+#ranking {
+  background-image: radial-gradient(rgb(226, 205, 12), rgb(204, 157, 2));
+  min-height: 40px;
+  min-width: 40px;
+  width: 10vmin;
+  height: 10vmin;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 500%;
+  border: none;
+  box-shadow: 0px 0.9vmin 0 0.6vmin rgb(73, 50, 0);
+  cursor: pointer;
+}
+
+#ranking span {
+  color: rgb(26, 25, 25);
+  font-size: 250%;
+}
+
+/* TABELA RANKING */
+
+#tabelaRanking {
+  width: 80%;
+  max-width: 400px;
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 20px;
+  color: white;
+  padding: 20px;
+}
+
+#registrarRanking {
+  width: 80%;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 20px;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#fundoRank {
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#fecharRanking {
+  background-color: transparent;
+  color: red;
+  border: none;
+  cursor: pointer;
+  text-align: end;
+  width: 100%;
+}
+
+#fundoRegistroRank {
+  position: absolute;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#fecharRegistroRanking {
+  background-color: transparent;
+  color: red;
+  border: none;
+  cursor: pointer;
+  text-align: end;
+  width: 100%;
+}
+
+#registrarRanking h2 {
+  color: rgb(150, 150, 150);
+  text-align: center;
+}
+
+#registrarRanking h3 {
+  color: white;
+  font-size: .9em;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* NOME */
+
+#registrarNome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.letras {
+  font-family: "Sixtyfour";
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  width: 15vw;
+  height: 15vw;
+  max-width: 75px;
+  max-height: 75px;
+  font-size: clamp(20px, 8vw, 50px);
+  text-transform: uppercase;
+  border: 2px solid gray;
+  margin-top: 10px;
+}
+
+.letras:focus {
+  outline: 1px solid rgb(255, 208, 0);
+}
+
+.salvarNome {
+  background-color: transparent;
+  color: white;
+  font-family: "Sixtyfour";
+  width: 100px;
+  margin: 20px;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#avisoNome {
+  display: none;
+  color: rgb(255, 208, 0);
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.salvarNome:hover {
+  color: rgb(255, 208, 0);
+}
+
+#tituloRanking {
+  text-align: center;
+  font-family: "Sixtyfour";
+  color: rgb(255, 208, 0);
+}
+
+#nomeRanking {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px
+}
+
+#nomeRanking span{
+  color: white;
+  font-family: "Sixtyfour";
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MEDIA QUERY */
+
+@media (max-width: 628px) {
+  .display {
+    width: 75vw;
+    min-height: 12.5vw;
+    margin: 3vw 1vw;
+  }
+
+  .btn {
+    width: 22.5vw;
+    height: 22.5vw;
+    font-size: 10vw;
+    margin: 2px;
+  }
+
+  .play,
+  #indicador {
+    width: 15vw;
+    height: 15vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .title {
+    font-size: 9vw;
+    margin: 1vw;
+  }
+
+  .content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+  }
+
+  .content > .content {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8vw;
+  }
+
+  .btnGroup {
+    gap: 5vw;
+  }
+
+  .row1,
+  .row2 {
+    gap: 5vw;
+  }
+
+  .btn {
+    width: 30vw;
+    height: 30vw;
+    font-size: 14vw;
+    margin: 2px;
+  }
+
+  .play,
+  #indicador {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .play span {
+    font-size: 125%;
+  }
+
+  .txt-botoes {
+    font-size: 4vw;
+    margin-top: 5px;
+  }
+
+  .display {
+    width: 92vw;
+    min-height: 15vw;
+    margin: 3vw 1vw;
+  }
+
+  #textDisplay {
+    font-size: 6vw;
+  }
+}
