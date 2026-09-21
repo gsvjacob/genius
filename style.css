@@ -362,6 +362,39 @@ main {
   filter: saturate(1000%);
 }
 
+/* ==================== INPUT DIFICULDADE ==================== */
+
+#dificuldadeID {
+  width: 100%;
+  background-color: black;
+  color: #ffd000;
+  padding: 10px 5px;
+  border: 1px solid #9e6a09;
+  margin-left: 5px;
+  outline: none;
+  box-shadow: none;
+}
+
+#difculdadeID:focus {
+  outline: none;
+}
+
+#difNormal {
+  color: #ffefa9;
+}
+
+#difDificil {
+  color: #ffd000;
+}
+
+#difMuitoDificil {
+  color: #eb0c0c;
+}
+
+#difImpossivel {
+  color: #a700d1;
+}
+
 /* ==================== MODAL DO RANKING ==================== */
 
 #fundoRank {

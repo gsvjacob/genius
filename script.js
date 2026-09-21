@@ -59,6 +59,8 @@ let volumeMusica = document.getElementById("volumeMusicaID");
 
 let linhaVolumeMusica = document.getElementById("linhaVolume");
 
+let dificuldade = document.getElementById("dificuldadeID")
+
 /* ==================== ELEMENTOS DE SOM ==================== */
 
 let somPlay = document.getElementById("somPlay");
@@ -124,6 +126,34 @@ function sortearCor() {
   let novaCor = cores[idNovaCor];
 
   sequencia.push(novaCor);
+}
+
+/* ==================== SORTEIO DA SEQUÊNCIA (OUTRAS DIFICULDADES) ==================== */
+
+function sortearCorDificil() {
+  for (let i = 0; i < 2; i++) {
+
+    let idNovaCor = Math.random() * 4;
+
+    idNovaCor = Math.floor(idNovaCor);
+
+    let novaCor = cores[idNovaCor];
+
+    sequencia.push(novaCor);
+  }
+}
+
+function sortearCorMuitoDificil() {
+  for (let i = 0; i < 5; i++) {
+
+    let idNovaCor = Math.random() * 4;
+
+      idNovaCor = Math.floor(idNovaCor);
+
+    let novaCor = cores[idNovaCor];
+
+    sequencia.push(novaCor);
+  }
 }
 
 /* ==================== VALIDAÇÃO DA JOGADA ==================== */
@@ -209,6 +239,65 @@ function percorrerSequencia(i = 0) {
   }, 500);
 }
 
+/* ==================== EXIBIÇÃO DA SEQUÊNCIA (IMPOSSIVEL) ==================== */
+
+function percorrerSequenciaImpossivel(i = 0) {
+  jogando = false;
+  textDisplay.innerHTML = "Observe a sequência...";
+  textDisplay.style.fontSize = "3.5vmin";
+
+  let btnRed = document.querySelector(".btnRed");
+  let btnBlue = document.querySelector(".btnBlue");
+  let btnYellow = document.querySelector(".btnYellow");
+  let btnGreen = document.querySelector(".btnGreen");
+
+  btnRed.style.cursor = "no-drop";
+  btnBlue.style.cursor = "no-drop";
+  btnYellow.style.cursor = "no-drop";
+  btnGreen.style.cursor = "no-drop";
+
+  btnRed.classList.add("btnRedActive");
+  btnBlue.classList.add("btnBlueActive");
+  btnYellow.classList.add("btnYellowActive");
+  btnGreen.classList.add("btnGreenActive");
+
+  if (i >= sequencia.length) {
+    jogando = true;
+
+    btnRed.classList.remove("btnRedActive");
+    btnBlue.classList.remove("btnBlueActive");
+    btnYellow.classList.remove("btnYellowActive");
+    btnGreen.classList.remove("btnGreenActive");
+
+    btnRed.style.cursor = "pointer";
+    btnBlue.style.cursor = "pointer";
+    btnYellow.style.cursor = "pointer";
+    btnGreen.style.cursor = "pointer";
+
+    textDisplay.style.fontSize = "5vmin";
+    textDisplay.innerHTML = "Sua vez!";
+    return;
+  }
+
+  if (sequencia[i] == "R") {
+    indicador.style.backgroundColor = "#eb0c0c";
+  } else if (sequencia[i] == "B") {
+    indicador.style.backgroundColor = "#0c40eb";
+  } else if (sequencia[i] == "Y") {
+    indicador.style.backgroundColor = "#f0c505";
+  } else if (sequencia[i] == "G") {
+    indicador.style.backgroundColor = "#40eb0c";
+  }
+
+  setTimeout(() => {
+    indicador.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+
+    setTimeout(() => {
+      percorrerSequenciaImpossivel(i + 1);
+    }, 200);
+  }, 50);
+}
+
 /* ==================== INICIAR JOGO ==================== */
 
 function iniciarJogo() {
@@ -219,8 +308,20 @@ function iniciarJogo() {
   posicaoJogador = 0;
   pontuacao = 0;
 
-  sortearCor();
-  percorrerSequencia();
+  if (dificuldade.value === "normal") {
+    sortearCor();
+    percorrerSequencia();
+  } else if (dificuldade.value === "dificil") {
+    sortearCorDificil();
+    percorrerSequencia();
+  } else if (dificuldade.value === "muitoDificil") {
+    sortearCorMuitoDificil();
+    percorrerSequencia();
+  } else if (dificuldade.value === "impossivel") {
+    sortearCorMuitoDificil();
+    percorrerSequenciaImpossivel();
+  }
+
 }
 
 /* ==================== ANIMAÇÃO DE ACERTO ==================== */
@@ -246,12 +347,35 @@ function animacaoAcerto() {
         indicador.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
 
         if (i == 3) {
-          sortearCor();
-          posicaoJogador = 0;
+          if (dificuldade.value === "normal") {
+            sortearCor();
+            posicaoJogador = 0;
 
-          setTimeout(() => {
-            percorrerSequencia();
-          }, 500);
+            setTimeout(() => {
+              percorrerSequencia();
+            }, 500);
+          } else if (dificuldade.value === "dificil") {
+            sortearCorDificil();
+            posicaoJogador = 0;
+
+            setTimeout(() => {
+              percorrerSequencia();
+            }, 500);
+          } else if (dificuldade.value === "muitoDificil") {
+            sortearCorMuitoDificil();
+            posicaoJogador = 0;
+
+            setTimeout(() => {
+              percorrerSequencia();
+            }, 500);
+          } else if (dificuldade.value === "impossivel") {
+            sortearCorMuitoDificil();
+            posicaoJogador = 0;
+
+            setTimeout(() => {
+              percorrerSequenciaImpossivel();
+            }, 500);
+          }
         }
       },
       i * 200 + 100,
