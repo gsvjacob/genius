@@ -4,6 +4,8 @@ Uma recriação do clássico jogo **Genius (Simon)** desenvolvida com **HTML, CS
 
 A **V2** amplia a primeira versão do projeto com um sistema de ranking online, efeitos sonoros, novas telas e diversos ajustes de interface e experiência de uso.
 
+Acesso ao Jogo: [Genius](https://gsvjacob.github.io/genius/)
+
 ---
 
 ## 🕹️ Sobre o jogo
