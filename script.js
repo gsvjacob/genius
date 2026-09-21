@@ -5,6 +5,8 @@ const supabaseKey = "sb_publishable_Abn-URkWKbRISYflxOXH3w_IOdi9jpB";
 
 const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
+let tabela = "";
+
 /* ==================== VARIÁVEIS DO JOGO ==================== */
 
 let sequencia = [];
@@ -144,7 +146,7 @@ function sortearCorDificil() {
 }
 
 function sortearCorMuitoDificil() {
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 3; i++) {
 
     let idNovaCor = Math.random() * 4;
 
@@ -294,8 +296,8 @@ function percorrerSequenciaImpossivel(i = 0) {
 
     setTimeout(() => {
       percorrerSequenciaImpossivel(i + 1);
-    }, 200);
-  }, 50);
+    }, 150);
+  }, 75);
 }
 
 /* ==================== INICIAR JOGO ==================== */
