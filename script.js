@@ -5,7 +5,7 @@ const supabaseKey = "sb_publishable_Abn-URkWKbRISYflxOXH3w_IOdi9jpB";
 
 const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-let tabela = "";
+let tabela;
 
 /* ==================== VARIÁVEIS DO JOGO ==================== */
 
@@ -61,7 +61,19 @@ let volumeMusica = document.getElementById("volumeMusicaID");
 
 let linhaVolumeMusica = document.getElementById("linhaVolume");
 
-let dificuldade = document.getElementById("dificuldadeID")
+let dificuldade = document.getElementById("dificuldadeID");
+
+dificuldade.addEventListener("change", () => {
+  if (dificuldade.value === "normal") {
+    dificuldade.style.color = "#ffefa9";
+  } else if (dificuldade.value === "dificil") {
+    dificuldade.style.color = "#ffd000";
+  } else if (dificuldade.value === "muitoDificil") {
+    dificuldade.style.color = "#eb0c0c";
+  } else if (dificuldade.value === "impossivel") {
+    dificuldade.style.color = "#a700d1";
+  }
+});
 
 /* ==================== ELEMENTOS DE SOM ==================== */
 
@@ -134,7 +146,6 @@ function sortearCor() {
 
 function sortearCorDificil() {
   for (let i = 0; i < 2; i++) {
-
     let idNovaCor = Math.random() * 4;
 
     idNovaCor = Math.floor(idNovaCor);
@@ -147,7 +158,6 @@ function sortearCorDificil() {
 
 function sortearCorMuitoDificil() {
   for (let i = 0; i < 3; i++) {
-
     let idNovaCor = Math.random() * 4;
 
     idNovaCor = Math.floor(idNovaCor);
@@ -323,7 +333,6 @@ function iniciarJogo() {
     sortearCorMuitoDificil();
     percorrerSequenciaImpossivel();
   }
-
 }
 
 /* ==================== ANIMAÇÃO DE ACERTO ==================== */
@@ -427,8 +436,18 @@ function fecharRank() {
 }
 
 async function atualizarRanking() {
+  if (dificuldade.value === "normal") {
+    tabela = "ranking";
+  } else if (dificuldade.value === "dificil") {
+    tabela = "ranking_dificil";
+  } else if (dificuldade.value === "muitoDificil") {
+    tabela = "ranking_muito_dificil";
+  } else if (dificuldade.value === "impossivel") {
+    tabela = "ranking_impossivel";
+  }
+
   const { data, error } = await supabaseClient
-    .from("ranking")
+    .from(tabela)
     .select("nome, pontuacao")
     .order("pontuacao", { ascending: false })
     .limit(10);
@@ -445,9 +464,9 @@ async function atualizarRanking() {
   for (let i = 0; i < data.length; i++) {
     listaRanking.innerHTML += `
       <div id="nomeRanking">
-        <span class="${ i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : "" }">${i + 1}º</span>
-        <span class="${ i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : "" }">${data[i].nome}</span>
-        <span class="${ i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : "" }">${data[i].pontuacao}</span>
+        <span class="${i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : ""}">${i + 1}º</span>
+        <span class="${i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : ""}">${data[i].nome}</span>
+        <span class="${i === 0 ? "top1" : i === 1 ? "top2" : i === 2 ? "top3" : ""}">${data[i].pontuacao}</span>
       </div>
     `;
   }
@@ -530,12 +549,22 @@ async function pegarNome() {
 
   let valorLetra3 = letra3.value;
 
+  if (dificuldade.value === "normal") {
+    tabela = "ranking";
+  } else if (dificuldade.value === "dificil") {
+    tabela = "ranking_dificil";
+  } else if (dificuldade.value === "muitoDificil") {
+    tabela = "ranking_muito_dificil";
+  } else if (dificuldade.value === "impossivel") {
+    tabela = "ranking_impossivel";
+  }
+
   if (!valorLetra1 || !valorLetra2 || !valorLetra3) {
     aviso.style.display = "block";
   } else {
     let nome = valorLetra1 + valorLetra2 + valorLetra3;
 
-    const { error } = await supabaseClient.from("ranking").insert({
+    const { error } = await supabaseClient.from(tabela).insert({
       nome: nome,
       pontuacao: ultimaPontuacao,
     });

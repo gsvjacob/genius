@@ -367,7 +367,7 @@ main {
 #dificuldadeID {
   width: 100%;
   background-color: black;
-  color: #ffd000;
+  color: #ffefa9;
   padding: 10px 5px;
   border: 1px solid #9e6a09;
   margin-left: 5px;
@@ -640,6 +640,26 @@ input[type="range"]::-webkit-slider-thumb {
   font-size: 0.9em;
 }
 
+/* ==================== TOP 1 2 e 3 ==================== */
+
+#nomeRanking span.top1 {
+  background-image: linear-gradient(to top, #ffd900, #ffd900, #fcac01, #ffe762, #ffe762); -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 210, 61, 0.25);
+}
+
+#nomeRanking span.top2 {
+  background-image: linear-gradient(to top, #ececec, #ececec, #6b6b6b, #ececec, #ececec); -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+#nomeRanking span.top3 {
+  background-image: linear-gradient(to top, #ffa33a, #ffa33a, #b84c0e, #b87c23, #e9a136); -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 156, 156, 0.25);
+}
+
 /* ==================== RESPONSIVIDADE ==================== */
 
 @media (max-width: 600px) {
@@ -691,22 +711,4 @@ input[type="range"]::-webkit-slider-thumb {
   #textDisplay {
     font-size: 4vmin;
   }
-}
-
-#nomeRanking span.top1 {
-  background-image: linear-gradient(to top, #ffd900, rgb(179, 131, 30), #ffd900); -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 10px rgba(255, 237, 178, 0.75);
-}
-
-#nomeRanking span.top2 {
-  background-image: linear-gradient(to top, #ececec, #6b6b6b, #ececec); -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.75);
-}
-
-#nomeRanking span.top3 {
-  background-image: linear-gradient(to top, #f59898, #bb4141, #f59898); -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 10px rgba(255, 156, 156, 0.75);
 }
