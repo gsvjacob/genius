@@ -1,6 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sixtyfour&display=swap");
 
+/* ==================== VARIÁVEIS DE COR ==================== */
+
+:root {
+  --corBorda: #9e6a09;
+  --corControle: #3d2902;
+  --corPrincipal: #ffd000;
+
+  --amarelo: #ffd000;
+  --azul: #1495ff;
+  --vermelho: #eb0c0c;
+  --roxo: #a700d1;
+}
+
 /* ==================== RESET ==================== */
 
 * {
@@ -53,13 +66,11 @@ main {
   pointer-events: none;
   z-index: 10;
 
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.055) 1px,
-    rgba(255, 255, 255, 0.055) 2px,
-    transparent 2px,
-    transparent 4px
-  );
+  background: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.055) 1px,
+      rgba(255, 255, 255, 0.055) 2px,
+      transparent 2px,
+      transparent 4px);
 }
 
 .crt::after {
@@ -69,11 +80,9 @@ main {
   pointer-events: none;
   z-index: 11;
 
-  background: radial-gradient(
-    ellipse at center,
-    transparent 55%,
-    rgba(0, 0, 0, 0.25) 100%
-  );
+  background: radial-gradient(ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.25) 100%);
 
   box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.8);
 }
@@ -200,8 +209,8 @@ main {
 }
 
 #textDisplay {
-  color: rgb(255, 208, 0);
-  text-shadow: 0px 0px 5px rgb(255, 208, 0);
+  color: var(--corPrincipal);
+  text-shadow: 0px 0px 5px var(--corPrincipal);
   font-size: 5vmin;
   word-wrap: break-word;
   width: 100%;
@@ -367,9 +376,9 @@ main {
 #dificuldadeID {
   width: 100%;
   background-color: black;
-  color: #ffefa9;
+  color: var(--corPrincipal);
   padding: 10px 5px;
-  border: 1px solid #9e6a09;
+  border: 1px solid var(--corBorda);
   margin-left: 5px;
   outline: none;
   box-shadow: none;
@@ -380,19 +389,19 @@ main {
 }
 
 #difNormal {
-  color: #ffefa9;
+  color: var(--amarelo);
 }
 
 #difDificil {
-  color: #ffd000;
+  color: var(--azul);
 }
 
 #difMuitoDificil {
-  color: #eb0c0c;
+  color: var(--vermelho);
 }
 
 #difImpossivel {
-  color: #a700d1;
+  color: var(--roxo);
 }
 
 /* ==================== MODAL DO RANKING ==================== */
@@ -420,7 +429,7 @@ main {
 .tituloModal {
   text-align: center;
   font-family: "Sixtyfour";
-  color: #ffd000;
+  color: var(--corPrincipal);
 }
 
 #fecharRanking {
@@ -465,15 +474,15 @@ input[type="checkbox"] {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid #ffd000;
+  border: 2px solid var(--corPrincipal);
   background-color: transparent;
   cursor: pointer;
   transform: translateY(-1px);
 }
 
 input[type="checkbox"]:checked {
-  border: 2px solid #9e6a09;
-  background-color: #ffd000;
+  border: 2px solid var(--corBorda);
+  background-color: var(--corPrincipal);
 }
 
 input[type="range"] {
@@ -481,17 +490,17 @@ input[type="range"] {
   min-width: 20px;
   max-width: 100px;
   height: 20px;
-  border: 2px solid #9e6a09;
+  border: 2px solid var(--corBorda);
   background-color: transparent;
-  background-color: #ffd000;
+  background-color: var(--corPrincipal);
 }
 
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: #9e6a09;
-  border: 2px solid #3d2902;
+  background: var(--corBorda);
+  border: 2px solid var(--corControle);
 }
 
 #fecharConfig {
@@ -513,12 +522,12 @@ input[type="range"]::-webkit-slider-thumb {
 
 .linhaCheckbox a {
   text-decoration: none;
-  color: #ffd000;
+  color: var(--corPrincipal);
 }
 
 .linhaCheckbox a:hover {
   text-decoration: underline;
-  color: #9e6a09;
+  color: var(--corBorda);
 }
 
 /* ==================== LISTA DO RANKING ==================== */
@@ -611,7 +620,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .letras:focus {
-  outline: 1px solid rgb(255, 208, 0);
+  outline: 1px solid var(--corPrincipal);
 }
 
 .salvarNome {
@@ -630,12 +639,12 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .salvarNome:hover {
-  color: rgb(255, 208, 0);
+  color: var(--corPrincipal);
 }
 
 #avisoNome {
   display: none;
-  color: #ffd000;
+  color: var(--corPrincipal);
   font-style: italic;
   font-size: 0.9em;
 }
@@ -643,19 +652,22 @@ input[type="range"]::-webkit-slider-thumb {
 /* ==================== TOP 1 2 e 3 ==================== */
 
 #nomeRanking span.top1 {
-  background-image: linear-gradient(to top, #ffd900, #ffd900, #fcac01, #ffe762, #ffe762); -webkit-background-clip: text;
+  background-image: linear-gradient(to top, #ffd900, #ffd900, #fcac01, #ffe762, #ffe762);
+  -webkit-background-clip: text;
   color: transparent;
   text-shadow: 0 0 10px rgba(255, 210, 61, 0.25);
 }
 
 #nomeRanking span.top2 {
-  background-image: linear-gradient(to top, #ececec, #ececec, #6b6b6b, #ececec, #ececec); -webkit-background-clip: text;
+  background-image: linear-gradient(to top, #ececec, #ececec, #6b6b6b, #ececec, #ececec);
+  -webkit-background-clip: text;
   color: transparent;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
 }
 
 #nomeRanking span.top3 {
-  background-image: linear-gradient(to top, #ffa33a, #ffa33a, #b84c0e, #b87c23, #e9a136); -webkit-background-clip: text;
+  background-image: linear-gradient(to top, #ffa33a, #ffa33a, #b84c0e, #b87c23, #e9a136);
+  -webkit-background-clip: text;
   color: transparent;
   text-shadow: 0 0 10px rgba(255, 156, 156, 0.25);
 }
@@ -675,7 +687,7 @@ input[type="range"]::-webkit-slider-thumb {
     gap: 3vmin;
   }
 
-  .content > .content {
+  .content>.content {
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -687,6 +699,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 30vw;
     margin: 1vmin;
   }
+
   .btnGroup {
     margin: 5vmin;
   }

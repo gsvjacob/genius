@@ -65,14 +65,27 @@ let dificuldade = document.getElementById("dificuldadeID");
 
 dificuldade.addEventListener("change", () => {
   if (dificuldade.value === "normal") {
-    dificuldade.style.color = "#ffefa9";
-  } else if (dificuldade.value === "dificil") {
     dificuldade.style.color = "#ffd000";
+    document.documentElement.style.setProperty("--corPrincipal", "#ffd000");
+    document.documentElement.style.setProperty("--corBorda", "#9e6a09");
+    document.documentElement.style.setProperty("--corControle", "#3d2902");
+  } else if (dificuldade.value === "dificil") {
+    dificuldade.style.color = "#1495ff";
+    document.documentElement.style.setProperty("--corPrincipal", "#1495ff");
+    document.documentElement.style.setProperty("--corBorda", "#0b5e9e");
+    document.documentElement.style.setProperty("--corControle", "#06304f");
   } else if (dificuldade.value === "muitoDificil") {
     dificuldade.style.color = "#eb0c0c";
+    document.documentElement.style.setProperty("--corPrincipal", "#eb0c0c");
+    document.documentElement.style.setProperty("--corBorda", "#9c0808");
+    document.documentElement.style.setProperty("--corControle", "#4d0404");
   } else if (dificuldade.value === "impossivel") {
     dificuldade.style.color = "#a700d1";
+    document.documentElement.style.setProperty("--corPrincipal", "#a700d1");
+    document.documentElement.style.setProperty("--corBorda", "#71008e");
+    document.documentElement.style.setProperty("--corControle", "#380047");
   }
+
 });
 
 /* ==================== ELEMENTOS DE SOM ==================== */
